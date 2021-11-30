@@ -43,8 +43,7 @@
         },
         {
             "id" : 4,
-            "name" : "",
-            "description": "Développer la partie front-end d’une interface utilisateur web",
+            "name" : "Développer la partie front-end d’une interface utilisateur web",
             "activityId" : 1
         },
         {
