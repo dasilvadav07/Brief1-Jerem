@@ -1,0 +1,119 @@
+{
+    "users" : [
+        {
+        "id" : 1,
+         "firstName" : "Denis",
+         "lastName" : "Decilap",
+         "avatar" : "" 
+        },
+        {
+        "id" : 2,
+         "firstName" : "David",
+         "lastName" : "Dasilva",
+         "avatar" : "" 
+        },
+        {
+        "id" : 3,
+         "firstName" : "Kevin",
+         "lastName" : "Jean-Charles",
+         "avatar" : "" 
+        },
+        {
+        "id" : 4,
+         "firstName" : "Alicia",
+         "lastName" : "Derradji",
+         "avatar" : "" 
+        }  
+    ],
+    "skills" : [
+        {
+            "id" : 1,
+            "label" : "Maquetter une application",
+            "activityId" : 1
+        },
+        {
+            "id" : 2,
+            "label" : "Développer une interface utilisateur de type desktop",
+            "activityId" : 1
+        },
+        {
+            "id" : 3,
+            "name" : "Développer des composants d’accès aux données",
+            "activityId" : 1
+        },
+        {
+            "id" : 4,
+            "name" : "",
+            "description": "Développer la partie front-end d’une interface utilisateur web",
+            "activityId" : 1
+        },
+        {
+            "id" : 5,
+            "name" : "Développer la partie back-end d’une interface utilisateur web",
+            "activityId" : 1
+        },
+        {
+            "id" : 6,
+            "name" : "Concevoir une base de données",
+            "activityId" : 2
+        },
+        {
+            "id" : 7,
+            "name" : "Mettre en place une base de données",
+            "activityId" : 2
+        },
+        {
+            "id" : 8,
+            "name" : "Développer des composants dans le langage d’une base de données",
+            "activityId" : 2
+        },
+        {
+            "id" : 9,
+            "name" : "Collaborer à la gestion d’un projet informatique et à l’organisation de l’environnement de développement",
+            "activityId" : 3
+        },
+        {
+            "id" : 10,
+            "name" : "Concevoir une application",
+            "activityId" : 3
+        },
+        {
+            "id" : 11,
+            "name" : "Développer des composants métier",
+            "activityId" : 3
+        },
+        {
+            "id" : 12,
+            "name" : "Construire une application organisée en couches",
+            "activityId" : 3
+        },
+        {
+            "id" : 13,
+            "name" : "Développer une application mobile",
+            "activityId" : 3
+        },
+        {
+            "id" : 14,
+            "name" : "Préparer et exécuter les plans de tests d’une application",
+            "activityId" : 3
+        },
+        {
+            "id" : 15,
+            "name" : "Préparer et exécuter le déploiement d’une application",
+            "activityId" : 3
+        }
+    ],
+    "levels" : [
+    ],
+    "activiy" : [
+        {   "id" : 1,
+            "description" : "Concevoir et développer des composants d'interfaceutilisateur en intégrant les recommandations de sécurité"
+        },
+        {   "id" : 2,
+            "description" : "Concevoir et développer la persistance des données en intégrant les recommandations de sécurité"
+        },
+        {   "id" : 3,
+            "description" : "Concevoir et développer une application multicouche répartie en intégrant les recommandations de sécurité"
+        }
+    ]
+}
