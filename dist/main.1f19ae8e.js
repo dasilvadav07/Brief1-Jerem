@@ -262,7 +262,7 @@ var Application = /*#__PURE__*/function () {
 
     _classCallCheck(this, Application);
 
-    _defineProperty(this, "constainer_bubble", document.querySelector(".container_bubble"));
+    _defineProperty(this, "container_bubble", document.querySelector(".container_bubble"));
 
     _defineProperty(this, "idUser", 1);
 
@@ -291,18 +291,39 @@ var Application = /*#__PURE__*/function () {
       for (var i = 0; i < cercles.length; i++) {
         var angle = Math.PI * 2 / cercles.length * i;
         positionCercle(cercles[i], angle);
+        cercles[i].querySelector(".bubble_comp_container").style.transform = "rotate(".concat(224 + i * 24, "deg)");
       }
 
       for (var _i = 0; _i < secondBubble.length; _i++) {
         var _angle = Math.PI * 2 / secondBubble.length * _i;
 
-        secondBubble[_i].style.left = cercles[_i].style.left;
-        secondBubble[_i].style.top = cercles[_i].style.top;
-        firstBubble[_i].style.top = cercles[_i].style.top;
-        firstBubble[_i].style.left = cercles[_i].style.left;
-        thirdBubble[_i].style.top = cercles[_i].style.top;
-        thirdBubble[_i].style.left = cercles[_i].style.left;
-      }
+        secondBubble[_i].style.left = 0;
+        secondBubble[_i].style.top = "100%";
+        firstBubble[_i].style.top = "120%";
+        firstBubble[_i].style.left = "50%";
+        thirdBubble[_i].style.top = "50%";
+        thirdBubble[_i].style.left = "-20%";
+      } // let menuBtn = document.querySelector("#menu-mobile");
+      // let firstBar = document.querySelector("#menu-mobile span:first-child");
+      // let secondBar = document.querySelector("#menu-mobile span:nth-child(2)");
+      // let thirdBar = document.querySelector("#menu-mobile span:last-child");
+      // let menuLink = document.querySelectorAll('.menu-list-item a');
+      // let menu = document.querySelector(".menu_open");
+      // menuLink.forEach(link => {
+      //   link.addEventListener("click", () => {
+      //     firstBar.classList.toggle('transition');
+      //     secondBar.classList.toggle('transition2');
+      //     thirdBar.classList.toggle('transition3');
+      //     menu.classList.toggle('show');
+      //   })
+      // });
+      // menuBtn.addEventListener("click", () => {
+      //   firstBar.classList.toggle('transition');
+      //   secondBar.classList.toggle('transition2');
+      //   thirdBar.classList.toggle('transition3');
+      //   menu.classList.toggle('show');
+      // })
+
     }
   }, {
     key: "buildSkills",
@@ -312,7 +333,7 @@ var Application = /*#__PURE__*/function () {
       (0, _skill.getSkills)().then(function (skills) {
         skills.forEach(function (skill, index) {
           console.log(skill, index);
-          _this2.constainer_bubble.innerHTML += _this2.displayBubble(skill, index);
+          _this2.container_bubble.innerHTML += _this2.displayBubble(skill, index);
         });
 
         _this2.asyncStyle();
@@ -321,7 +342,7 @@ var Application = /*#__PURE__*/function () {
   }, {
     key: "displayBubble",
     value: function displayBubble(skill, index) {
-      return "  \n    <div class=\"bubble\" id=\"b".concat(index + 1, "\">\n        <div class=\"bubble_comp_container\">\n            <div class=\"bubble_comp\"></div>\n            <div class=\"bubble_comp\"></div>\n            <div class=\"bubble_comp\"></div>\n        </div>\n    </div>");
+      return "  \n    <div class=\"bubble\" id=\"b".concat(index + 1, "\">\n        <div class=\"bubble_comp_container\">\n        \n            <div class=\"bubble_comp\">", 1, "</div>\n            <div class=\"bubble_comp\">", 2, "</div>\n            <div class=\"bubble_comp\">", 3, "</div>\n        </div>\n    </div>");
     }
   }]);
 
@@ -366,7 +387,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64536" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51484" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
