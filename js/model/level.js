@@ -12,3 +12,5 @@ class Level {
     this.userId = userId;
   }
 }
+
+export default Level;
