@@ -98,7 +98,7 @@ class Application {
               Promise.all(createLevel(skillId, self.currentUser))
                 .then(resp => Promise.all( resp.map(r => r.json()) ))
                 .then(result => {
-                  //location.reload();
+                  location.reload();
                 });
             }
              /*this.removeElement('.rv-vanilla-modal');
@@ -107,9 +107,7 @@ class Application {
     }); 
   }
 
-  displayBubbleCom(){
-
-  }
+  displayBubbleCom(){}
 
   displayModal(skillId){
     let body = document.querySelector("body");
