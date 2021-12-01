@@ -178,3 +178,34 @@ img{
   margin-right: 0.5rem;
 }
 
+
+/* CSS Page 2 */
+
+.container_categ{
+  width: 100%;
+  height: 90vh;
+}
+.categ{
+  min-height: 25vh;
+  background: #EC0B33;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.comp{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+.comp_block{
+  width: 25%;
+}
+.comp_block h2{
+  text-align: center;
+}
+.comp_desc{
+  min-height: 35vh;
+  background: #EC0B33;
+  padding: 0.5rem 1rem;
+}
