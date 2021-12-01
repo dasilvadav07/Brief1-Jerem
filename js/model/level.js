@@ -5,13 +5,13 @@ class Level {
   skillId;
   userId;
   isValidated;
-  constructor(id, label, number, skillId, userId, isValidated) {
-    this.id = id;
-    this.label = label;
-    this.number = number;
-    this.skillId = skillId;
-    this.userId = userId;
-    this.isValidated = isValidated;
+  constructor(level) {
+    this.id = level.id;
+    this.label = level.label;
+    this.number = level.number;
+    this.skillId = level.skillId;
+    this.userId = level.userId;
+    this.isValidated = level.isValidated;
   }
 }
 
