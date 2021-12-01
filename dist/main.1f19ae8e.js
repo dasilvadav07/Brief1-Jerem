@@ -127,27 +127,42 @@ exports.default = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var User = function User(user) {
-  _classCallCheck(this, User);
+var User = /*#__PURE__*/function () {
+  function User(user) {
+    _classCallCheck(this, User);
 
-  _defineProperty(this, "id", void 0);
+    _defineProperty(this, "id", void 0);
 
-  _defineProperty(this, "firstName", void 0);
+    _defineProperty(this, "firstName", void 0);
 
-  _defineProperty(this, "lastName", void 0);
+    _defineProperty(this, "lastName", void 0);
 
-  _defineProperty(this, "avatar", void 0);
+    _defineProperty(this, "avatar", void 0);
 
-  _defineProperty(this, "levels", []);
+    _defineProperty(this, "levels", []);
 
-  this.id = user.id;
-  this.lastName = user.lastName;
-  this.firstName = user.firstName;
-  this.avatar = user.avatar;
-  this.levels = user.levels;
-};
+    this.id = user.id;
+    this.lastName = user.lastName;
+    this.firstName = user.firstName;
+    this.avatar = user.avatar;
+    this.levels = user.levels;
+  }
+
+  _createClass(User, [{
+    key: "getFullName",
+    value: function getFullName(user) {
+      return user.lastName + " " + user.firstName;
+    }
+  }]);
+
+  return User;
+}();
 
 var _default = User;
 exports.default = _default;
@@ -276,6 +291,8 @@ var Application = /*#__PURE__*/function () {
 
     _defineProperty(this, "container_bubble", document.querySelector(".container_bubble"));
 
+    _defineProperty(this, "container_user", document.querySelector(".container_user"));
+
     _defineProperty(this, "idUser", 1);
 
     _defineProperty(this, "currentUser", void 0);
@@ -284,12 +301,24 @@ var Application = /*#__PURE__*/function () {
 
     _defineProperty(this, "levelPromiseAll", []);
 
-    (0, _user2.getUserById)(1).then(function (user) {
+    (0, _user2.getUserById)(2).then(function (user) {
       _this.currentUser = new _user.default(user);
+
+      _this.displayInfoUser();
     });
   }
 
   _createClass(Application, [{
+    key: "displayInfoUser",
+    value: function displayInfoUser() {
+      var image = document.createElement("img");
+      var nameUser = document.createElement("p");
+      image.src = this.currentUser.avatar;
+      nameUser.textContent = this.currentUser.getFullName(this.currentUser);
+      this.container_user.append(image);
+      this.container_user.append(nameUser);
+    }
+  }, {
     key: "asyncStyle",
     value: function asyncStyle() {
       var cercles = document.querySelectorAll(".bubble");
@@ -492,7 +521,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51046" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58640" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
