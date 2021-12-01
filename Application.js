@@ -12,7 +12,7 @@ class Application {
   levelPromiseAll=[];
 
   constructor() {
-    getUserById(2).then((user) => {
+    getUserById(3).then((user) => {
       this.currentUser = new User(user);
       this.displayInfoUser();
     });
