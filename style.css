@@ -80,6 +80,9 @@ body {
 .container {
   height: 90vh;
   width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
 }
 .container_user {
   width: 30%;
@@ -157,5 +160,21 @@ img{
 
 .hide{
   display: none;
+}
+
+.legend{
+  margin-left: 16px;
+  align-self: flex-end;
+}
+.legend_categ div, .legend_level div{
+  display: flex;
+  align-items: center;
+}
+.legend_categ div span, .legend_level div span{
+  width: 25px;
+  height: 25px;
+  background: black;
+  border-radius: 50%;
+  margin-right: 0.5rem;
 }
 
