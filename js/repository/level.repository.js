@@ -29,4 +29,11 @@ function createLevel(skillId, currentUser) {
   return skills;
 }
 
+
+function udateLevel(skillId, currentUser) {
+  // récup l'id + tranform en true
+ 
+  
+}
+
 export { postLevel, createLevel };
