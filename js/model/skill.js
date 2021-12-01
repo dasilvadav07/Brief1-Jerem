@@ -8,3 +8,5 @@ class Skill {
     this.activatityId = activatityId;
   }
 }
+
+export default Skill;

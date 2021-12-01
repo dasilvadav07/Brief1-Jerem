@@ -6,3 +6,4 @@ class Activity {
     this.description = description;
   }
 }
+export default Activity;
