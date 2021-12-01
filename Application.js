@@ -5,18 +5,28 @@ import { createLevel } from "./js/repository/level.repository";
 
 class Application {
   container_bubble = document.querySelector(".container_bubble");
+  container_user = document.querySelector(".container_user");
   idUser = 1;
   currentUser;
   skillsData;
   levelPromiseAll=[];
 
   constructor() {
-    getUserById(1).then((user) => {
+    getUserById(2).then((user) => {
       this.currentUser = new User(user);
+      this.displayInfoUser();
     });
   }
 
-  
+  displayInfoUser(){
+    let image = document.createElement("img");
+    let nameUser = document.createElement("p");
+    image.src = this.currentUser.avatar;
+    nameUser.textContent = this.currentUser.getFullName(this.currentUser);
+    this.container_user.append(image);
+    this.container_user.append(nameUser);
+  }
+
   asyncStyle() {
     let cercles = document.querySelectorAll(".bubble");
     let firstBubble = document.querySelectorAll(".bubble_comp:first-child");
