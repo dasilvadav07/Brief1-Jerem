@@ -2,9 +2,9 @@
   "name": "brief1-jerem",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "js/bootstrap/homeApp.js",
   "scripts": {
-    "start": "json-server --watch json/db.json & parcel index.html"
+    "start": "json-server --watch json/db.json & parcel views/index.html"
   },
   "repository": {
     "type": "git",

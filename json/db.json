@@ -150,6 +150,30 @@
       "userId": 1,
       "isValidated": false,
       "id": 6
+    },
+    {
+      "label": "Niveau 1",
+      "number": 1,
+      "skillId": 10,
+      "userId": 1,
+      "isValidated": false,
+      "id": 7
+    },
+    {
+      "label": "Niveau 2",
+      "number": 2,
+      "skillId": 10,
+      "userId": 1,
+      "isValidated": false,
+      "id": 8
+    },
+    {
+      "label": "Niveau 3",
+      "number": 3,
+      "skillId": 10,
+      "userId": 1,
+      "isValidated": false,
+      "id": 9
     }
   ],
   "activity": [

@@ -1,9 +1,9 @@
-import Activity from "./js/model/activity";
-import { getSkillsByActivity } from "./js/repository/activity.repository";
-import menu from "./js/menu";
+import Activity from "../model/activity";
+import { getSkillsByActivity } from "../repository/activity.repository";
+import menu from "../../libs/menu";
 
 menu();
-class Application2 {
+class ActivityController {
   container_activity = document.querySelector(".container_categ");
   container_skills = document.querySelector(".comp_block");
   idActivity = 1;
@@ -85,4 +85,4 @@ class Application2 {
 
 }
 
-export default Application2;
+export default ActivityController;

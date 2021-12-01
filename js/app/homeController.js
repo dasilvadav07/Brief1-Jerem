@@ -1,10 +1,10 @@
-import User from "./js/model/user";
-import { getUserById } from "./js/repository/user.repository";
-import { getSkills } from "./js/repository/skill.repository";
-import {createLevel, udateLevel} from "./js/repository/level.repository";
-import menu from "./js/menu";
+import User from "../model/user";
+import { getUserById } from "../repository/user.repository";
+import { getSkills } from "../repository/skill.repository";
+import {createLevel, udateLevel} from "../repository/level.repository";
+import menu from "../../libs/menu";
 
-class Application {
+class HomeController {
   container_bubble = document.querySelector(".container_bubble");
   container_user = document.querySelector(".container_user");
   idUser = 1;
@@ -213,4 +213,4 @@ class Application {
 
 }
 
-export default Application;
+export default HomeController;
