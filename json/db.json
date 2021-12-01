@@ -38,67 +38,67 @@
     },
     {
       "id": 3,
-      "name": "Développer des composants d’accès aux données",
+      "label": "Développer des composants d’accès aux données",
       "activityId": 1
     },
     {
       "id": 4,
-      "name": "Développer la partie front-end d’une interface utilisateur web",
+      "label": "Développer la partie front-end d’une interface utilisateur web",
       "activityId": 1
     },
     {
       "id": 5,
-      "name": "Développer la partie back-end d’une interface utilisateur web",
+      "label": "Développer la partie back-end d’une interface utilisateur web",
       "activityId": 1
     },
     {
       "id": 6,
-      "name": "Concevoir une base de données",
+      "label": "Concevoir une base de données",
       "activityId": 2
     },
     {
       "id": 7,
-      "name": "Mettre en place une base de données",
+      "label": "Mettre en place une base de données",
       "activityId": 2
     },
     {
       "id": 8,
-      "name": "Développer des composants dans le langage d’une base de données",
+      "label": "Développer des composants dans le langage d’une base de données",
       "activityId": 2
     },
     {
       "id": 9,
-      "name": "Collaborer à la gestion d’un projet informatique et à l’organisation de l’environnement de développement",
+      "label": "Collaborer à la gestion d’un projet informatique et à l’organisation de l’environnement de développement",
       "activityId": 3
     },
     {
       "id": 10,
-      "name": "Concevoir une application",
+      "label": "Concevoir une application",
       "activityId": 3
     },
     {
       "id": 11,
-      "name": "Développer des composants métier",
+      "label": "Développer des composants métier",
       "activityId": 3
     },
     {
       "id": 12,
-      "name": "Construire une application organisée en couches",
+      "label": "Construire une application organisée en couches",
       "activityId": 3
     },
     {
       "id": 13,
-      "name": "Développer une application mobile",
+      "label": "Développer une application mobile",
       "activityId": 3
     },
     {
       "id": 14,
-      "name": "Préparer et exécuter les plans de tests d’une application",
+      "label": "Préparer et exécuter les plans de tests d’une application",
       "activityId": 3
     },
     {
       "id": 15,
-      "name": "Préparer et exécuter le déploiement d’une application",
+      "label": "Préparer et exécuter le déploiement d’une application",
       "activityId": 3
     }
   ],
