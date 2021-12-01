@@ -22,7 +22,8 @@ function createLevel(skillId, currentUser) {
           label: labels[number-1],
           number: number,
           skillId: skillId,
-          userId: currentUser.id
+          userId: currentUser.id,
+          isValidated: false
       }));
   }
   return skills;

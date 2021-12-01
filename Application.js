@@ -72,9 +72,13 @@ class Application {
 
   buildSkills() {
     getSkills().then((skills) => {
-      skills.forEach((skill, index) => {
-        this.container_bubble.innerHTML +=
+        skills.forEach((skill, index) => {
+          this.container_bubble.innerHTML +=
             this.displayBubble(skill, index);
+            const isExist = (skillId) => !!this.currentUser.levels.find(level => level.skillId === skillId);
+            isExist(skill.id) === true ?
+                document.querySelector('div[data-id="'+parseInt(skill.id)+'"]')
+                    .querySelector('.bubble_comp_container').classList.add('active'): '';
         });
         this.asyncStyle();
         this.addEventSkills();
@@ -85,22 +89,21 @@ class Application {
       let skills = document.querySelectorAll('.bubble');
       skills.forEach((skill, index) => {
           skill.addEventListener('click', () => {
-            skill.querySelector('.bubble_comp_container').classList.remove('hide')
-            let self = this;
-            let skillId = parseInt(skill.dataset.id);
-              const isExist = (number) => 
-                !!this.currentUser.levels.find(level => 
-                    level.skillId === skillId);
+              let isActive = skill.querySelector('.active');
+              let bubble_comp_container = skill.querySelector('.bubble_comp_container');
+                  bubble_comp_container.classList.remove('hide');
+                  bubble_comp_container.classList.add('active');
 
-                    console.log(this.currentUser)
+              let self = this;
+              let skillId = parseInt(skill.dataset.id);
 
-            if(!isExist()){
-              Promise.all(createLevel(skillId, self.currentUser))
-                .then(resp => Promise.all( resp.map(r => r.json()) ))
-                .then(result => {
-                  location.reload();
-                });
-            }
+              if(!isActive){
+                Promise.all(createLevel(skillId, self.currentUser))
+                  .then(resp => Promise.all( resp.map(r => r.json()) ))
+                  .then(result => {
+
+                  });
+              }
              /*this.removeElement('.rv-vanilla-modal');
              this.displayModal(skill.dataset.id);*/
           })
@@ -155,20 +158,24 @@ class Application {
       }); 
   }
 
-
   removeElement(className){
     let isExist = !!document.querySelector(className);
-    isExist != false ? 
+    isExist != false ?
       document.querySelector(className).remove() : '';
   }
   
   displayBubble(skill, index) {
-    //createMany(skill, this.currentUser)
     let levels = this.currentUser.levels;
     index = index + 1;
-    const isValidate = (number) => 
-              !!levels.find(level => 
-                  level.skillId === skill.id && level.number == number);
+    //const isValidate = (number) =>
+              //!!levels.find(level =>
+                 // level.skillId === skill.id && level.isValidated === true);
+
+      const isValidate = (number) =>
+          !!levels.find(level =>
+              level.skillId === skill.id
+              && level.number === number
+              && level.isValidated === true);
 
     const isVisible = (skillId) => 
           !!levels.find(level => 
