@@ -249,6 +249,48 @@
       "skillId": 9,
       "userId": 3,
       "id": 21
+    },
+    {
+      "label": "Niveau 1",
+      "number": 1,
+      "skillId": 13,
+      "userId": 3,
+      "id": 22
+    },
+    {
+      "label": "Niveau 2",
+      "number": 2,
+      "skillId": 13,
+      "userId": 3,
+      "id": 23
+    },
+    {
+      "label": "Niveau 3",
+      "number": 3,
+      "skillId": 13,
+      "userId": 3,
+      "id": 24
+    },
+    {
+      "label": "Niveau 1",
+      "number": 1,
+      "skillId": 12,
+      "userId": 3,
+      "id": 25
+    },
+    {
+      "label": "Niveau 2",
+      "number": 2,
+      "skillId": 12,
+      "userId": 3,
+      "id": 26
+    },
+    {
+      "label": "Niveau 3",
+      "number": 3,
+      "skillId": 12,
+      "userId": 3,
+      "id": 27
     }
   ],
   "activity": [
