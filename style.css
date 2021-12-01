@@ -58,7 +58,9 @@ body {
   left: -200px;
   transition: all 0.3s ease-in-out;
   border-radius: 0 10px 10px 0;
+  background: white;
 }
+
 .menu_open li {
   padding: 1rem;
   border-bottom: 1px solid;

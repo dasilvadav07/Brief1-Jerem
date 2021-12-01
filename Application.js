@@ -2,6 +2,7 @@ import User from "./js/model/user";
 import { getUserById } from "./js/repository/user.repository";
 import { getSkills } from "./js/repository/skill.repository";
 import { createLevel } from "./js/repository/level.repository";
+import menu from "./js/menu";
 
 class Application {
   container_bubble = document.querySelector(".container_bubble");
@@ -56,6 +57,8 @@ class Application {
       thirdBubble[i].style.top = "50%";
       thirdBubble[i].style.left = "-20%";
     }
+
+    menu();
 
     // let menuBtn = document.querySelector("#menu-mobile");
     // let firstBar = document.querySelector("#menu-mobile span:first-child");

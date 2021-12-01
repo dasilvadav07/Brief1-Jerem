@@ -1,8 +1,8 @@
 import Activity from "./js/model/activity";
-import { getUserById } from "./js/repository/user.repository";
 import { getSkillsByActivity } from "./js/repository/activity.repository";
-import { createLevel } from "./js/repository/level.repository";
+import menu from "./js/menu";
 
+menu();
 class Application2 {
   container_activity = document.querySelector(".container_categ");
   container_skills = document.querySelector(".comp_block");
@@ -12,11 +12,14 @@ class Application2 {
   levelPromiseAll=[];
 
   constructor() {
-    getSkillsByActivity(2).then((activity) => {
+    
+    var url = location.href;
+    var activityUrl = new URL(url)
+    var actId = parseInt(activityUrl.searchParams.get("activityId"));
+    getSkillsByActivity(actId).then((activity) => {
       this.currentActivity = new Activity(activity);
-     // console.log(this.currentActivity);
       this.displayActivity();
-      //console.log(activity);
+
     });
   }
 
