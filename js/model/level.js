@@ -5,6 +5,10 @@ class Level {
   skillId;
   isValidated;
   userId;
+<<<<<<< HEAD
+=======
+  isValidated;
+>>>>>>> b78c39a58317ae0da0499b87d0e5781456d4cae4
   constructor(level) {
     this.id = level.id;
     this.label = level.label;

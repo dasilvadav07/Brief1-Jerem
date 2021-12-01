@@ -2,21 +2,32 @@ import User from "./js/model/user";
 import { getUserById } from "./js/repository/user.repository";
 import { getSkills } from "./js/repository/skill.repository";
 import { createLevel } from "./js/repository/level.repository";
+import menu from "./js/menu";
 
 class Application {
   container_bubble = document.querySelector(".container_bubble");
+  container_user = document.querySelector(".container_user");
   idUser = 1;
   currentUser;
   skillsData;
   levelPromiseAll=[];
 
   constructor() {
-    getUserById(1).then((user) => {
+    getUserById(3).then((user) => {
       this.currentUser = new User(user);
+      this.displayInfoUser();
     });
   }
 
-  
+  displayInfoUser(){
+    let image = document.createElement("img");
+    let nameUser = document.createElement("p");
+    image.src = this.currentUser.avatar;
+    nameUser.textContent = this.currentUser.getFullName(this.currentUser);
+    this.container_user.append(image);
+    this.container_user.append(nameUser);
+  }
+
   asyncStyle() {
     let cercles = document.querySelectorAll(".bubble");
     let firstBubble = document.querySelectorAll(".bubble_comp:first-child");
@@ -46,6 +57,8 @@ class Application {
       thirdBubble[i].style.top = "50%";
       thirdBubble[i].style.left = "-20%";
     }
+
+    menu();
 
     // let menuBtn = document.querySelector("#menu-mobile");
     // let firstBar = document.querySelector("#menu-mobile span:first-child");

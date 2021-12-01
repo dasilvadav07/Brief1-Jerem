@@ -4,25 +4,25 @@
       "id": 1,
       "firstName": "Denis",
       "lastName": "Decilap",
-      "avatar": ""
+      "avatar": "https://pbs.twimg.com/profile_images/861677361141567489/g3O6AYMl.jpg"
     },
     {
       "id": 2,
       "firstName": "David",
       "lastName": "Dasilva",
-      "avatar": ""
+      "avatar": "https://www.benouaiche.com/wp-content/uploads/2018/12/homme-medecine-chirurgie-esthetique-dr-benouaiche-paris.jpg"
     },
     {
       "id": 3,
       "firstName": "Kevin",
       "lastName": "Jean-Charles",
-      "avatar": ""
+      "avatar": "https://archzine.fr/wp-content/uploads/2016/08/coup-de-cheveux-homme-noir.jpg"
     },
     {
       "id": 4,
       "firstName": "Alicia",
       "lastName": "Derradji",
-      "avatar": ""
+      "avatar": "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FFAC.2Fvar.2Ffemmeactuelle.2Fstorage.2Fimages.2Famour.2Fcoaching-amoureux.2Fcest-quoi-belle-femme-temoignages-43206.2F14682626-1-fre-FR.2Fc-est-quoi-une-belle-femme-temoignages.2Ejpg/1200x1200/quality/80/crop-from/center/c-est-quoi-une-belle-femme-temoignages.jpeg"
     }
   ],
   "skills": [
@@ -38,67 +38,67 @@
     },
     {
       "id": 3,
-      "name": "Développer des composants d’accès aux données",
+      "label": "Développer des composants d’accès aux données",
       "activityId": 1
     },
     {
       "id": 4,
-      "name": "Développer la partie front-end d’une interface utilisateur web",
+      "label": "Développer la partie front-end d’une interface utilisateur web",
       "activityId": 1
     },
     {
       "id": 5,
-      "name": "Développer la partie back-end d’une interface utilisateur web",
+      "label": "Développer la partie back-end d’une interface utilisateur web",
       "activityId": 1
     },
     {
       "id": 6,
-      "name": "Concevoir une base de données",
+      "label": "Concevoir une base de données",
       "activityId": 2
     },
     {
       "id": 7,
-      "name": "Mettre en place une base de données",
+      "label": "Mettre en place une base de données",
       "activityId": 2
     },
     {
       "id": 8,
-      "name": "Développer des composants dans le langage d’une base de données",
+      "label": "Développer des composants dans le langage d’une base de données",
       "activityId": 2
     },
     {
       "id": 9,
-      "name": "Collaborer à la gestion d’un projet informatique et à l’organisation de l’environnement de développement",
+      "label": "Collaborer à la gestion d’un projet informatique et à l’organisation de l’environnement de développement",
       "activityId": 3
     },
     {
       "id": 10,
-      "name": "Concevoir une application",
+      "label": "Concevoir une application",
       "activityId": 3
     },
     {
       "id": 11,
-      "name": "Développer des composants métier",
+      "label": "Développer des composants métier",
       "activityId": 3
     },
     {
       "id": 12,
-      "name": "Construire une application organisée en couches",
+      "label": "Construire une application organisée en couches",
       "activityId": 3
     },
     {
       "id": 13,
-      "name": "Développer une application mobile",
+      "label": "Développer une application mobile",
       "activityId": 3
     },
     {
       "id": 14,
-      "name": "Préparer et exécuter les plans de tests d’une application",
+      "label": "Préparer et exécuter les plans de tests d’une application",
       "activityId": 3
     },
     {
       "id": 15,
-      "name": "Préparer et exécuter le déploiement d’une application",
+      "label": "Préparer et exécuter le déploiement d’une application",
       "activityId": 3
     }
   ],

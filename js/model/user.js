@@ -13,6 +13,9 @@ class User {
     this.levels = user.levels;
   }
 
+  getFullName(user){
+    return user.lastName + " " + user.firstName;
+  }
   
 }
 

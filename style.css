@@ -7,6 +7,7 @@ body {
   font-family: "Poppins", sans-serif;
   position: relative;
 }
+
 .menu {
   height: 10vh;
 }
@@ -57,7 +58,9 @@ body {
   left: -200px;
   transition: all 0.3s ease-in-out;
   border-radius: 0 10px 10px 0;
+  background: white;
 }
+
 .menu_open li {
   padding: 1rem;
   border-bottom: 1px solid;
@@ -79,6 +82,9 @@ body {
 .container {
   height: 90vh;
   width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
 }
 .container_user {
   width: 30%;
@@ -86,7 +92,18 @@ body {
   background: black;
   border-radius: 50%;
   margin: auto;
+  text-align: center;
+  overflow: hidden;
 }
+.container_user img:hover{
+  transform: scale(1.3);
+  transition: all ease-in-out 0.3s;
+}
+
+.container_user img{
+  width: 100%;
+}
+
 .container_bubble {
   height: 40vw;
   width: 40vw;
@@ -150,3 +167,51 @@ body {
   display: none;
 }
 
+.legend{
+  margin-left: 16px;
+  align-self: flex-end;
+}
+.legend_categ div, .legend_level div{
+  display: flex;
+  align-items: center;
+}
+.legend_categ div span, .legend_level div span{
+  width: 25px;
+  height: 25px;
+  background: black;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+
+/* CSS Page 2 */
+
+.container_categ{
+  width: 100%;
+  height: 90vh;
+}
+.categ{
+  min-height: 25vh;
+  background: #EC0B33;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.comp{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.comp_block{
+  width: 30%;
+}
+.comp_block h2{
+  text-align: center;
+}
+.comp_desc{
+  min-height: 35vh;
+  background: #EC0B33;
+  padding: 0.5rem 1rem;
+}
