@@ -102,8 +102,10 @@
       "activityId": 3
     }
   ],
-  "levels": [],
-  "activiy": [
+  "levels": [
+    
+  ],
+  "activity": [
     {
       "id": 1,
       "description": "Concevoir et développer des composants d'interfaceutilisateur en intégrant les recommandations de sécurité"

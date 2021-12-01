@@ -129,7 +129,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var User = function User(id, firstName, lastName, avatar) {
+var User = function User(user) {
   _classCallCheck(this, User);
 
   _defineProperty(this, "id", void 0);
@@ -140,13 +140,13 @@ var User = function User(id, firstName, lastName, avatar) {
 
   _defineProperty(this, "avatar", void 0);
 
-  _defineProperty(this, "level", void 0);
+  _defineProperty(this, "levels", []);
 
-  this.id = id;
-  this.lastName = lastName;
-  this.firstName = firstName;
-  this.avatar = avatar;
-  this.level = this.level;
+  this.id = user.id;
+  this.lastName = user.lastName;
+  this.firstName = user.firstName;
+  this.avatar = user.avatar;
+  this.levels = user.levels;
 };
 
 var _default = User;
@@ -201,35 +201,48 @@ var apiUrl = "http://localhost:3000";
 function getSkills() {
   return (0, _utils.default)("".concat(apiUrl, "/skills"));
 }
-},{"../utils":"js/utils.js"}],"js/model/skill.js":[function(require,module,exports) {
+},{"../utils":"js/utils.js"}],"js/repository/level.repository.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.createLevel = createLevel;
+exports.postLevel = postLevel;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _utils = _interopRequireDefault(require("../utils"));
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Skill = function Skill(id, label, activatityId) {
-  _classCallCheck(this, Skill);
+var apiUrl = "http://localhost:3000";
 
-  _defineProperty(this, "id", void 0);
+function postLevel(level) {
+  return fetch("".concat(apiUrl, "/levels"), {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(level)
+  });
+}
 
-  _defineProperty(this, "label", void 0);
+function createLevel(skillId, currentUser) {
+  var labels = ["Niveau 1", "Niveau 2", "Niveau 3"];
+  var skills = [];
 
-  _defineProperty(this, "activatityId", void 0);
+  for (var number = 1; number <= 3; number++) {
+    skills.push(postLevel({
+      label: labels[number - 1],
+      number: number,
+      skillId: skillId,
+      userId: currentUser.id
+    }));
+  }
 
-  this.id = id;
-  this.label = label;
-  this.activatityId = activatityId;
-};
-
-var _default = Skill;
-exports.default = _default;
-},{}],"application.js":[function(require,module,exports) {
+  return skills;
+}
+},{"../utils":"js/utils.js"}],"application.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -243,7 +256,7 @@ var _user2 = require("./js/repository/user.repository");
 
 var _skill = require("./js/repository/skill.repository");
 
-var _skill2 = _interopRequireDefault(require("./js/model/skill"));
+var _level = require("./js/repository/level.repository");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -256,7 +269,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Application = /*#__PURE__*/function () {
-  //apiUrl = "http://localhost:3000";
   function Application() {
     var _this = this;
 
@@ -269,6 +281,8 @@ var Application = /*#__PURE__*/function () {
     _defineProperty(this, "currentUser", void 0);
 
     _defineProperty(this, "skillsData", void 0);
+
+    _defineProperty(this, "levelPromiseAll", []);
 
     (0, _user2.getUserById)(1).then(function (user) {
       _this.currentUser = new _user.default(user);
@@ -332,17 +346,107 @@ var Application = /*#__PURE__*/function () {
 
       (0, _skill.getSkills)().then(function (skills) {
         skills.forEach(function (skill, index) {
-          console.log(skill, index);
           _this2.container_bubble.innerHTML += _this2.displayBubble(skill, index);
         });
 
         _this2.asyncStyle();
+
+        _this2.addEventSkills();
       });
+    }
+  }, {
+    key: "addEventSkills",
+    value: function addEventSkills() {
+      var _this3 = this;
+
+      var skills = document.querySelectorAll('.bubble');
+      skills.forEach(function (skill, index) {
+        skill.addEventListener('click', function () {
+          skill.querySelector('.bubble_comp_container').classList.remove('hide');
+          var self = _this3;
+          var skillId = parseInt(skill.dataset.id);
+
+          var isExist = function isExist(number) {
+            return !!_this3.currentUser.levels.find(function (level) {
+              return level.skillId === skillId;
+            });
+          };
+
+          console.log(_this3.currentUser);
+
+          if (!isExist()) {
+            Promise.all((0, _level.createLevel)(skillId, self.currentUser)).then(function (resp) {
+              return Promise.all(resp.map(function (r) {
+                return r.json();
+              }));
+            }).then(function (result) {//location.reload();
+            });
+          }
+          /*this.removeElement('.rv-vanilla-modal');
+          this.displayModal(skill.dataset.id);*/
+
+        });
+      });
+    }
+  }, {
+    key: "displayBubbleCom",
+    value: function displayBubbleCom() {}
+  }, {
+    key: "displayModal",
+    value: function displayModal(skillId) {
+      var _this4 = this;
+
+      var body = document.querySelector("body");
+      var div = document.createElement('div');
+      div.className = 'rv-vanilla-modal';
+      div.id = 'target-modal';
+      div.innerHTML = "\n            <div class=\"rv-vanilla-modal-header group\">\n                <button class=\"rv-vanilla-modal-close\"><span class=\"close\">\xD7</span></button>\n                <h2 class=\"rv-vanilla-modal-title\">Modal Title</h2>\n              </div>\n              <div class=\"rv-vanilla-modal-body\">\n              <form id=\"form\">\n                <p>\n                <label for='my-date'>Label</label><br>\n                  <input type='text' name='label' placeholder='yyyy-mm-jj'>\n                </p>\n                <p>\n                <label for='my-time'>Niveau</label><br>\n                  <select name=\"number\">\n                    <option value=\"1\">1</option>\n                    <option value=\"2\">2</option>\n                    <option value=\"3\">3</option>\n                  </select>\n                </p>\n                <p><button type='submit'>Valider</button>\n            </form>\n          </div>\n      ";
+      body.append(div);
+      body.querySelector('.close').addEventListener('click', function () {
+        _this4.removeElement('.rv-vanilla-modal');
+      });
+      var self = this;
+      body.querySelector('#form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var reqBody = {
+          skillId: skillId
+        };
+        Object.keys(this.elements).forEach(function (key) {
+          var element = form.elements[key];
+
+          if (element.type !== "submit") {
+            reqBody[element.name] = element.value;
+          }
+        });
+        (0, _level.createLevel)(reqBody, self.currentUser);
+      });
+    }
+  }, {
+    key: "removeElement",
+    value: function removeElement(className) {
+      var isExist = !!document.querySelector(className);
+      isExist != false ? document.querySelector(className).remove() : '';
     }
   }, {
     key: "displayBubble",
     value: function displayBubble(skill, index) {
-      return "  \n    <div class=\"bubble\" id=\"b".concat(index + 1, "\">\n        <div class=\"bubble_comp_container\">\n        \n            <div class=\"bubble_comp\">", 1, "</div>\n            <div class=\"bubble_comp\">", 2, "</div>\n            <div class=\"bubble_comp\">", 3, "</div>\n        </div>\n    </div>");
+      //createMany(skill, this.currentUser)
+      var levels = this.currentUser.levels;
+      index = index + 1;
+
+      var isValidate = function isValidate(number) {
+        return !!levels.find(function (level) {
+          return level.skillId === skill.id && level.number == number;
+        });
+      };
+
+      var isVisible = function isVisible(skillId) {
+        return !!levels.find(function (level) {
+          return level.skillId === skillId;
+        });
+      };
+
+      return "<div class=\"bubble activity-".concat(skill.activityId, "\" id=\"b").concat(index, "\" data-id=\"").concat(skill.id, "\">\n              <div class=\"bubble_comp_container").concat(isVisible(skill.id) == false ? ' hide' : '', "\">\n                  <div class=\"bubble_comp").concat(isValidate(1) != false ? " bubble_red" : "", "\">", 1, "</div>\n                  <div class=\"bubble_comp").concat(isValidate(2) != false ? " bubble_red" : "", "\">", 2, "</div>\n                  <div class=\"bubble_comp").concat(isValidate(3) != false ? " bubble_red" : "", "\">", 3, "</div>\n              </div>\n          </div>");
     }
   }]);
 
@@ -351,7 +455,7 @@ var Application = /*#__PURE__*/function () {
 
 var _default = Application;
 exports.default = _default;
-},{"./js/model/user":"js/model/user.js","./js/repository/user.repository":"js/repository/user.repository.js","./js/repository/skill.repository":"js/repository/skill.repository.js","./js/model/skill":"js/model/skill.js"}],"main.js":[function(require,module,exports) {
+},{"./js/model/user":"js/model/user.js","./js/repository/user.repository":"js/repository/user.repository.js","./js/repository/skill.repository":"js/repository/skill.repository.js","./js/repository/level.repository":"js/repository/level.repository.js"}],"main.js":[function(require,module,exports) {
 "use strict";
 
 var _application = _interopRequireDefault(require("./application"));

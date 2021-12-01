@@ -3,14 +3,14 @@ class User {
   firstName;
   lastName;
   avatar;
-  level;
+  levels = [];
 
-  constructor(id, firstName, lastName, avatar) {
-    this.id = id;
-    this.lastName = lastName;
-    this.firstName = firstName;
-    this.avatar = avatar;
-    this.level = this.level;
+  constructor(user) {
+    this.id = user.id;
+    this.lastName = user.lastName;
+    this.firstName = user.firstName;
+    this.avatar = user.avatar;
+    this.levels = user.levels;
   }
 
   

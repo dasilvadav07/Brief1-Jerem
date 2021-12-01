@@ -5,6 +5,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  position: relative;
 }
 .menu {
   height: 10vh;
@@ -78,6 +79,9 @@ body {
 .container {
   height: 90vh;
   width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
 }
 .container_user {
   width: 30%;
@@ -99,6 +103,7 @@ body {
 .bubble {
   height: 5vw;
   width: 5vw;
+  cursor: pointer;
   background-color: black;
   border-radius: 50%;
   position: absolute;
@@ -115,9 +120,52 @@ body {
   position: absolute;
   width: 1.5vw;
   height: 1.5vw;
-  background-color: blue;
+  line-height: 1.5vw;
+  font-size: 12px;
+  background-color: #C4C4C4;
+  padding: 1px;
   border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(220deg);
   margin: auto;
   text-align: center;
 }
+
+.bubble_red{
+  background: red;
+}
+
+
+.activity-1{
+  background: #F4E23E;
+}
+
+
+.activity-2{
+  background: #3D981D;
+}
+
+.activity-3{
+  background: #314DAE;
+}
+
+
+.hide{
+  display: none;
+}
+
+.legend{
+  margin-left: 16px;
+  align-self: flex-end;
+}
+.legend_categ div, .legend_level div{
+  display: flex;
+  align-items: center;
+}
+.legend_categ div span, .legend_level div span{
+  width: 25px;
+  height: 25px;
+  background: black;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
