@@ -59,42 +59,37 @@ class Application {
     }
 
     menu();
-
-    // let menuBtn = document.querySelector("#menu-mobile");
-    // let firstBar = document.querySelector("#menu-mobile span:first-child");
-    // let secondBar = document.querySelector("#menu-mobile span:nth-child(2)");
-    // let thirdBar = document.querySelector("#menu-mobile span:last-child");
-    // let menuLink = document.querySelectorAll('.menu-list-item a');
-    // let menu = document.querySelector(".menu_open");
-    // menuLink.forEach(link => {
-    //   link.addEventListener("click", () => {
-    //     firstBar.classList.toggle('transition');
-    //     secondBar.classList.toggle('transition2');
-    //     thirdBar.classList.toggle('transition3');
-    //     menu.classList.toggle('show');
-    //   })
-    // });
-
-    // menuBtn.addEventListener("click", () => {
-    //   firstBar.classList.toggle('transition');
-    //   secondBar.classList.toggle('transition2');
-    //   thirdBar.classList.toggle('transition3');
-    //   menu.classList.toggle('show');
-    // })
   }
 
   buildSkills() {
     getSkills().then((skills) => {
         skills.forEach((skill, index) => {
-          this.container_bubble.innerHTML +=
-            this.displayBubble(skill, index);
+          this.container_bubble.innerHTML += this.displayBubble(skill, index);
             const isExist = (skillId) => !!this.currentUser.levels.find(level => level.skillId === skillId);
+            let currentSkill = document.querySelector('div[data-id="'+parseInt(skill.id)+'"]');   
+                  
             isExist(skill.id) === true ?
-                document.querySelector('div[data-id="'+parseInt(skill.id)+'"]')
-                    .querySelector('.bubble_comp_container').classList.add('active'): '';
+                currentSkill.querySelector('.bubble_comp_container').classList.add('active'): '';
+                // currentSkill.querySelectorAll(".bubble_comp").forEach(bubbleComp => {
+                //   console.log(bubbleComp);
+                //   bubbleComp.addEventListener("click", () => {
+                //      alert();
+                //   })
+                  
+                // });
         });
         this.asyncStyle();
         this.addEventSkills();
+        this.addEventsLevel();
+    });
+  }
+
+  addEventsLevel(bubbleComp){
+    document.querySelectorAll(".bubble_comp").forEach(bubbleComp => {
+      console.log(bubbleComp);
+      bubbleComp.addEventListener("click", () => {
+        
+      })
     });
   }
 
@@ -117,8 +112,6 @@ class Application {
 
                   });
               }
-             /*this.removeElement('.rv-vanilla-modal');
-             this.displayModal(skill.dataset.id);*/
           })
     }); 
   }
@@ -202,6 +195,9 @@ class Application {
               </div>
           </div>`;
   }
+
+
+
 }
 
 export default Application;
