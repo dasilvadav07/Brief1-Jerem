@@ -202,6 +202,7 @@ body {
 .container_categ{
   width: 100%;
   height: 90vh;
+  color: white;
 }
 .categ{
   min-height: 25vh;
