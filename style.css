@@ -19,6 +19,7 @@ body {
   position: relative;
   padding: 0;
   margin: 16px;
+  cursor: pointer;
 }
 #menu-mobile span {
   background-color: black;
@@ -80,11 +81,9 @@ body {
   transition: all 0.3s ease-in-out;
 }
 .container {
-  height: 90vh;
   width: 100%;
   display: flex;
-  flex-direction: row-reverse;
-  align-items: baseline;
+  flex-direction: column;
 }
 .container_user {
   width: 30%;
@@ -169,7 +168,7 @@ body {
 
 .legend{
   margin-left: 16px;
-  align-self: flex-end;
+  width: 100%;
 }
 .legend_categ div, .legend_level div{
   display: flex;
@@ -178,9 +177,20 @@ body {
 .legend_categ div span, .legend_level div span{
   width: 25px;
   height: 25px;
-  background: black;
   border-radius: 50%;
   margin-right: 0.5rem;
+}
+.yellow{
+  background-color: #F4E23E;
+}
+.green{
+  background-color: #3D981D;
+}
+.blue{
+  background-color: #314DAE;
+}
+.invalidate{
+  background-color: #C4C4C4;
 }
 
 
