@@ -1,7 +1,7 @@
 import User from "./js/model/user";
 import { getUserById } from "./js/repository/user.repository";
 import { getSkills } from "./js/repository/skill.repository";
-import { createLevel } from "./js/repository/level.repository";
+import {createLevel, udateLevel} from "./js/repository/level.repository";
 import menu from "./js/menu";
 
 class Application {
@@ -13,7 +13,7 @@ class Application {
   levelPromiseAll=[];
 
   constructor() {
-    getUserById(3).then((user) => {
+    getUserById(1).then((user) => {
       this.currentUser = new User(user);
       this.displayInfoUser();
     });
@@ -48,8 +48,6 @@ class Application {
     }
 
     for (let i = 0; i < secondBubble.length; i++) {
-      let angle = ((Math.PI * 2) / secondBubble.length) * i;
-
       secondBubble[i].style.left = 0;
       secondBubble[i].style.top = "100%";
       firstBubble[i].style.top = "120%";
@@ -57,45 +55,44 @@ class Application {
       thirdBubble[i].style.top = "50%";
       thirdBubble[i].style.left = "-20%";
     }
-
     menu();
-
-    // let menuBtn = document.querySelector("#menu-mobile");
-    // let firstBar = document.querySelector("#menu-mobile span:first-child");
-    // let secondBar = document.querySelector("#menu-mobile span:nth-child(2)");
-    // let thirdBar = document.querySelector("#menu-mobile span:last-child");
-    // let menuLink = document.querySelectorAll('.menu-list-item a');
-    // let menu = document.querySelector(".menu_open");
-    // menuLink.forEach(link => {
-    //   link.addEventListener("click", () => {
-    //     firstBar.classList.toggle('transition');
-    //     secondBar.classList.toggle('transition2');
-    //     thirdBar.classList.toggle('transition3');
-    //     menu.classList.toggle('show');
-    //   })
-    // });
-
-    // menuBtn.addEventListener("click", () => {
-    //   firstBar.classList.toggle('transition');
-    //   secondBar.classList.toggle('transition2');
-    //   thirdBar.classList.toggle('transition3');
-    //   menu.classList.toggle('show');
-    // })
   }
 
   buildSkills() {
     getSkills().then((skills) => {
         skills.forEach((skill, index) => {
-          this.container_bubble.innerHTML +=
-            this.displayBubble(skill, index);
+          this.container_bubble.innerHTML += this.displayBubble(skill, index);
             const isExist = (skillId) => !!this.currentUser.levels.find(level => level.skillId === skillId);
+            let currentSkill = document.querySelector('div[data-id="'+parseInt(skill.id)+'"]');
             isExist(skill.id) === true ?
-                document.querySelector('div[data-id="'+parseInt(skill.id)+'"]')
-                    .querySelector('.bubble_comp_container').classList.add('active'): '';
+                currentSkill.querySelector('.bubble_comp_container').classList.add('active'): '';
         });
         this.asyncStyle();
         this.addEventSkills();
+        this.addEventsLevel(document);
     });
+  }
+
+  addEventsLevel(element){
+    element.querySelectorAll(".bubble_comp").forEach(bubbleComp => {
+      bubbleComp.addEventListener("click", function(){
+        let isActive = this.classList.contains('bubble_red');
+        isActive ? this.classList.remove('bubble_red') : this.classList.add('bubble_red');
+        udateLevel(this.getAttribute('id'));
+      })
+    });
+  }
+
+  bubbleComStyle(skill){
+    let firstBubble = skill.querySelector(".bubble_comp:first-child");
+    let secondBubble = skill.querySelector(".bubble_comp:nth-child(2)");
+    let thirdBubble = skill.querySelector(".bubble_comp:last-child");
+    secondBubble.style.left = 0;
+    secondBubble.style.top = "100%";
+    firstBubble.style.top = "120%";
+    firstBubble.style.left = "50%";
+    thirdBubble.style.top = "50%";
+    thirdBubble.style.left = "-20%";
   }
 
   addEventSkills(){
@@ -113,17 +110,33 @@ class Application {
               if(!isActive){
                 Promise.all(createLevel(skillId, self.currentUser))
                   .then(resp => Promise.all( resp.map(r => r.json()) ))
-                  .then(result => {
-
+                  .then(levels => {
+                    let currentSkill = document.querySelector('div[data-id="'+skillId+'"]');
+                      currentSkill.querySelector('.bubble_comp_container')
+                          .innerHTML = this.displayBubbleComp(levels, skillId);
+                      this.bubbleComStyle(currentSkill);
+                      this.addEventsLevel(currentSkill);
                   });
               }
-             /*this.removeElement('.rv-vanilla-modal');
-             this.displayModal(skill.dataset.id);*/
           })
-    }); 
+    });
   }
 
-  displayBubbleCom(){}
+  isValidate(levels, number, skillId){
+    return !!levels.find(level =>
+      level.skillId === skillId
+      && level.number === number
+      && level.isValidated === true);
+  };
+
+  displayBubbleComp(levels, skillId){
+    let html = '';
+    if(levels.length > 0){
+       levels.forEach(level =>
+        {html +=`<div id="${level.id}" class="bubble_comp${this.isValidate(levels, level.number, skillId) !== false ? " bubble_red" : ""}">${level.number}</div>`;});
+    }
+    return html;
+   }
 
   displayModal(skillId){
     let body = document.querySelector("body");
@@ -180,24 +193,24 @@ class Application {
   displayBubble(skill, index) {
     let levels = this.currentUser.levels;
     index = index + 1;
-      const isValidate = (number) =>
-          !!levels.find(level =>
-              level.skillId === skill.id
-              && level.number === number
-              && level.isValidated === true);
-
     const isVisible = (skillId) => 
           !!levels.find(level => 
               level.skillId === skillId);
 
+    let bubbleComp = []
+    levels.find(level => {
+        level.skillId === skill.id ?  bubbleComp.push(level) : '';
+    });
+
     return `<div class="bubble activity-${skill.activityId}" id="b${index}" data-id="${skill.id}">
-              <div class="bubble_comp_container${isVisible(skill.id) == false ? ' hide' : ''}">
-                  <div class="bubble_comp${ isValidate(1) != false ? " bubble_red" : ""}">${1}</div>
-                  <div class="bubble_comp${ isValidate(2) != false ? " bubble_red" : ""}">${2}</div>
-                  <div class="bubble_comp${ isValidate(3) != false ? " bubble_red" : ""}">${3}</div>
+              <div class="bubble_comp_container${isVisible(skill.id) === false ? ' hide' : ''}">
+                 ${this.displayBubbleComp(bubbleComp, skill.id)}
               </div>
           </div>`;
   }
+
+
+
 }
 
 export default Application;

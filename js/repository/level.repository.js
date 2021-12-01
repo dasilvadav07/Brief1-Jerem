@@ -29,4 +29,27 @@ function createLevel(skillId, currentUser) {
   return skills;
 }
 
-export { postLevel, createLevel };
+
+function udateLevel(levelId) {
+    findById(levelId).then(level => {
+        fetch(`${apiUrl}/levels/${levelId}`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify({...level, isValidated: !level.isValidated})
+            });
+    });
+
+  // récup l'id + tranform en true
+ 
+  
+}
+
+function findById(levelId) {
+  return _fetch(`${apiUrl}/levels/${levelId}`);
+}
+
+export { postLevel, createLevel, udateLevel };
