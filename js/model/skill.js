@@ -2,10 +2,10 @@ class Skill {
   id;
   label;
   activatityId;
-  constructor(id, label, activatityId) {
-    this.id = id;
-    this.label = label;
-    this.activatityId = activatityId;
+  constructor(skill) {
+    this.id = skill.id;
+    this.label = skill.label;
+    this.activatityId = skill.activatityId;
   }
 }
 
