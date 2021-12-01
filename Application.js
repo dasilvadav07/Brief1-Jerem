@@ -86,9 +86,9 @@ class Application {
 
   addEventsLevel(bubbleComp){
     document.querySelectorAll(".bubble_comp").forEach(bubbleComp => {
-      console.log(bubbleComp);
+     // console.log(bubbleComp);
       bubbleComp.addEventListener("click", () => {
-        
+
       })
     });
   }
