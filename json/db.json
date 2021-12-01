@@ -103,6 +103,78 @@
     }
   ],
   "levels": [
+    {
+      "label": "Niveau 1",
+      "number": 1,
+      "skillId": 14,
+      "userId": 3,
+      "isValidated": false,
+      "id": 1
+    },
+    {
+      "label": "Niveau 2",
+      "number": 2,
+      "skillId": 14,
+      "userId": 3,
+      "isValidated": false,
+      "id": 2
+    },
+    {
+      "label": "Niveau 3",
+      "number": 3,
+      "skillId": 14,
+      "userId": 3,
+      "isValidated": false,
+      "id": 3
+    },
+    {
+      "label": "Niveau 1",
+      "number": 1,
+      "skillId": 15,
+      "userId": 3,
+      "isValidated": false,
+      "id": 4
+    },
+    {
+      "label": "Niveau 2",
+      "number": 2,
+      "skillId": 15,
+      "userId": 3,
+      "isValidated": false,
+      "id": 5
+    },
+    {
+      "label": "Niveau 3",
+      "number": 3,
+      "skillId": 15,
+      "userId": 3,
+      "isValidated": false,
+      "id": 6
+    },
+    {
+      "label": "Niveau 1",
+      "number": 1,
+      "skillId": 1,
+      "userId": 3,
+      "isValidated": false,
+      "id": 7
+    },
+    {
+      "label": "Niveau 2",
+      "number": 2,
+      "skillId": 1,
+      "userId": 3,
+      "isValidated": false,
+      "id": 8
+    },
+    {
+      "label": "Niveau 3",
+      "number": 3,
+      "skillId": 1,
+      "userId": 3,
+      "isValidated": false,
+      "id": 9
+    }
   ],
   "activity": [
     {

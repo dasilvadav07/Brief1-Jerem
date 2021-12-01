@@ -12,14 +12,12 @@ class Application2 {
   levelPromiseAll=[];
 
   constructor() {
-    
     var url = location.href;
     var activityUrl = new URL(url)
     var actId = parseInt(activityUrl.searchParams.get("activityId"));
     getSkillsByActivity(actId).then((activity) => {
       this.currentActivity = new Activity(activity);
       this.displayActivity();
-
     });
   }
 

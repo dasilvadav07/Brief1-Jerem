@@ -1,4 +1,3 @@
 import Application from "./Application";
-new Application().buildSkills();
 
- new Application().displayBubble();
+new Application().buildSkills();

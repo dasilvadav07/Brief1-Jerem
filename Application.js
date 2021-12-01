@@ -173,17 +173,13 @@ class Application {
 
   removeElement(className){
     let isExist = !!document.querySelector(className);
-    isExist != false ?
-      document.querySelector(className).remove() : '';
+      isExist !== false ?
+        document.querySelector(className).remove() : '';
   }
   
   displayBubble(skill, index) {
     let levels = this.currentUser.levels;
     index = index + 1;
-    //const isValidate = (number) =>
-              //!!levels.find(level =>
-                 // level.skillId === skill.id && level.isValidated === true);
-
       const isValidate = (number) =>
           !!levels.find(level =>
               level.skillId === skill.id
