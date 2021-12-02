@@ -98,6 +98,8 @@ body {
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 .container_user img:hover{
