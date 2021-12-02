@@ -1,0 +1,20 @@
+{
+  "name": "brief1-jerem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/bootstrap/homeApp.js",
+  "scripts": {
+    "start": "json-server --watch json/db.json & parcel views/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasilvadav07/Brief1-Jerem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dasilvadav07/Brief1-Jerem/issues"
+  },
+  "homepage": "https://github.com/dasilvadav07/Brief1-Jerem#readme"
+}

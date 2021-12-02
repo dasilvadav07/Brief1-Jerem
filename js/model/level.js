@@ -3,7 +3,6 @@ class Level {
   label;
   number;
   skillId;
-  isValidated;
   userId;
   isValidated;
   constructor(level) {

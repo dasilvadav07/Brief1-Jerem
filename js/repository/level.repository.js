@@ -1,4 +1,4 @@
-import _fetch from "../utils";
+import {_fetch} from "../utils";
 
 const apiUrl = "http://localhost:3000";
 
@@ -30,10 +30,26 @@ function createLevel(skillId, currentUser) {
 }
 
 
-function udateLevel(skillId, currentUser) {
+function udateLevel(levelId) {
+    findById(levelId).then(level => {
+        fetch(`${apiUrl}/levels/${levelId}`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify({...level, isValidated: !level.isValidated})
+            });
+    });
+
   // récup l'id + tranform en true
  
   
 }
 
-export { postLevel, createLevel };
+function findById(levelId) {
+  return _fetch(`${apiUrl}/levels/${levelId}`);
+}
+
+export { postLevel, createLevel, udateLevel };
