@@ -8,6 +8,7 @@ import {_getRandom} from "../utils";
 class HomeController {
   container_bubble = document.querySelector(".container_bubble");
   container_user = document.querySelector(".container_user");
+  container_username = document.querySelector('.user_name');
   idUser = 1;
   currentUser;
   skillsData;
@@ -26,7 +27,7 @@ class HomeController {
     image.src = this.currentUser.avatar;
     nameUser.textContent = this.currentUser.getFullName(this.currentUser);
     this.container_user.querySelector('.user_avatar').append(image);
-    this.container_user.append(nameUser);
+    this.container_username.append(nameUser);
   }
 
   asyncStyle() {
