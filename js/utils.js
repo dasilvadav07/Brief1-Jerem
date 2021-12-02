@@ -5,5 +5,10 @@ const _fetch = (url) =>{
         })
 }
 
+function _getRandom(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min +1)) + min;
+}
 
-export default _fetch;
+export { _fetch, _getRandom } ;

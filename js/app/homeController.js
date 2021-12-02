@@ -3,6 +3,7 @@ import { getUserById } from "../repository/user.repository";
 import { getSkills } from "../repository/skill.repository";
 import {createLevel, udateLevel} from "../repository/level.repository";
 import menu from "../../libs/menu";
+import {_getRandom} from "../utils";
 
 class HomeController {
   container_bubble = document.querySelector(".container_bubble");
@@ -13,7 +14,7 @@ class HomeController {
   levelPromiseAll=[];
 
   constructor() {
-    getUserById(1).then((user) => {
+    getUserById(_getRandom(1, 4)).then((user) => {
       this.currentUser = new User(user);
       this.displayInfoUser();
     });
@@ -24,7 +25,7 @@ class HomeController {
     let nameUser = document.createElement("p");
     image.src = this.currentUser.avatar;
     nameUser.textContent = this.currentUser.getFullName(this.currentUser);
-    this.container_user.append(image);
+    this.container_user.querySelector('.user_avatar').append(image);
     this.container_user.append(nameUser);
   }
 
