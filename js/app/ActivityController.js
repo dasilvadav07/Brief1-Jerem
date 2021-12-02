@@ -2,7 +2,7 @@ import Activity from "../model/activity";
 import { getSkillsByActivity } from "../repository/activity.repository";
 import menu from "../../libs/menu";
 
-menu();
+
 class ActivityController {
   container_activity = document.querySelector(".container_categ");
   container_skills = document.querySelector(".comp_block");
@@ -15,7 +15,7 @@ class ActivityController {
     var url = location.href;
     var activityUrl = new URL(url)
     var actId = parseInt(activityUrl.searchParams.get("activityId"));
-
+    menu();
     document.querySelector(`a[href="${location.pathname}${location.search}"]`)
         .classList.add('url-activated')
   
@@ -88,5 +88,4 @@ class ActivityController {
 
 
 }
-
 export default ActivityController;
